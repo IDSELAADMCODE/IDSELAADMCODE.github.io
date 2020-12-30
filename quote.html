@@ -278,7 +278,7 @@ table.blueTable tfoot .links a{
 		
 		
 		
-
+        auth_name_file_name = document.querySelector('#mydivheader').innerHTML
             var element = document.getElementById("toSave");
             var cert_canvas = document.getElementById("cert_canvas");
             if (cert_canvas != null) {
@@ -291,8 +291,9 @@ table.blueTable tfoot .links a{
                 useCORS: true
             }).then(function(canvas) {
                 canvas.setAttribute("id", "cert_canvas");
-                var file_name = "quote";
-                file_name.replace(/ /g, "_");
+                var file_name = auth_name_file_name;
+                file_name = file_name.replace(/ /g, "_");
+                file_name = file_name.replace(/<br>/g, "_");
                 //saveAs(canvas.toDataURL(), file_name.replace(/ /g, "_") + '.png');
 				          var imgData = canvas.toDataURL("image/jpeg", 1.0);
           var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
@@ -446,3 +447,4 @@ table.blueTable tfoot .links a{
 </div>
 
 </html>
+
