@@ -547,7 +547,7 @@ map.set('sat.png', 'سبت');   // a string key
 
 
       params = getParams();
-      document.querySelector('#mydivheader').innerHTML   =  "مع " + map.get(decodeURIComponent(params["teacher"])); // '<img   src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["teacher"]) + '" allowTaint="true" >';
+      document.querySelector('#mydivheader').innerHTML   =  map.get(decodeURIComponent(params["teacher"])); // '<img   src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["teacher"]) + '" allowTaint="true" >';
       document.querySelector('#mydivheader1').innerHTML   =  map.get(decodeURIComponent(params["subject"])); // '<img  src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["subject"]) + '" allowTaint="true" >';
       document.querySelector('#mydivheader2').innerHTML   =  map.get(decodeURIComponent(params["location"])); //  '<img  src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["location"]) + '" allowTaint="true" >';
       document.querySelector('#mydivheader3').innerHTML =  (params["start"]);
