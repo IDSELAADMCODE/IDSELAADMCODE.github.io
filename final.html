@@ -313,8 +313,8 @@ font-family: "STV", Times, serif;
 <div data-html2canvas-ignore="true" align="center">
   <div id="ad_gender_type">
   <p>اختر نوع الاعلان</p>
-  <input onclick="handleClick(this);" type="radio" name="gender" value="new_poster_empty_zoom.jpg" checked> اخوة واخوات<br>
-  <input onclick="handleClick(this);" type="radio" name="gender" value="course_ad_empty_female_zoom.jpg"> اخوات فقط<br>
+  <input onclick="handleClick(this);" type="radio" name="gender" value="scale_new_poster_empty_zoom.png" checked> اخوة واخوات<br>
+  <input onclick="handleClick(this);" type="radio" name="gender" value="scale_course_ad_empty_female_zoom.png"> اخوات فقط<br>
 </div>
 <br>    
 
@@ -332,7 +332,7 @@ font-family: "STV", Times, serif;
 </td>
           <td>
             <div class="imgbox">
-              <img id ="ad_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/new_poster_empty_zoom.jpg" allowTaint="true" >
+              <img id ="ad_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/scale_new_poster_empty_zoom.png" allowTaint="true" >
             </div>
           </td>
         </tr>
@@ -406,12 +406,12 @@ function saveAs(uri, filename) {
         window.scrollTo(-1,0);
         html2canvas(element,{ scale:4, useCORS:true}).then(function(canvas){
           canvas.setAttribute("id", "gggg");
-          var imgData = canvas.toDataURL("image/jpeg", 1.0);
+          var imgData = canvas.toDataURL("image/png", 1.0);
           var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
-          pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
+          pdf.addImage(imgData, 'PNG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
           for (var i = 1; i <= totalPDFPages; i++) { 
                     pdf.addPage(PDF_Width, PDF_Height);
-                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+                    pdf.addImage(imgData, 'PNG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
           }
           var filename = map.get(decodeURIComponent(params["subject"])) + map.get(decodeURIComponent(params["teacher"]));
           pdf.save(filename + ".pdf");
@@ -424,17 +424,17 @@ function saveAs(uri, filename) {
 
         html2canvas(element,{ scale:2, useCORS:true}).then(function(canvas){
           canvas.setAttribute("id", "gggg");
-          var imgData = canvas.toDataURL("image/jpeg", 1.0);
+          var imgData = canvas.toDataURL("image/png", 1.0);
           var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
-          pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
+          pdf.addImage(imgData, 'PNG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
           for (var i = 1; i <= totalPDFPages; i++) { 
                     pdf.addPage(PDF_Width, PDF_Height);
-                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+                    pdf.addImage(imgData, 'PNG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
           }
           var filename = map.get(decodeURIComponent(params["subject"])) + map.get(decodeURIComponent(params["teacher"]));
          // pdf.save(filename + ".pdf");
           document.body.appendChild(canvas);
-		  saveAs(imgData, filename + '.jpeg');
+		  saveAs(imgData, filename + '.png');
 
           while (element.hasChildNodes()) {
             element.removeChild(element.childNodes[0]);
