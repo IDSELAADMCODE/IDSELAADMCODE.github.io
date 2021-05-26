@@ -311,9 +311,12 @@ font-family: "STV", Times, serif;
 <td id="user_buttons" data-html2canvas-ignore="true">
 <div data-html2canvas-ignore="true" align="center">
   <div id="ad_gender_type">
+  <p>تمرير الدورة</p>
+  <input onclick="handleZoomClick(this);" type="radio" name="zoom" value="./" checked> وجاهي<br>
+  <input onclick="handleZoomClick(this);" type="radio" name="zoom" value="zoom/"> عبر الزووم<br>
   <p>اختر نوع الاعلان</p>
-  <input onclick="handleClick(this);" type="radio" name="gender" value="scale_new_poster_empty_zoom.png" checked> اخوة واخوات<br>
-  <input onclick="handleClick(this);" type="radio" name="gender" value="scale_course_ad_empty_female_zoom.png"> اخوات فقط<br>
+  <input id="gender_both" onclick="handleClick(this);" type="radio" name="gender" value="scale_new_poster_empty.png" checked> اخوة واخوات<br>
+  <input id="gender_female" onclick="handleClick(this);" type="radio" name="gender" value="scale_course_ad_empty_female.png"> اخوات فقط<br>
 </div>
 <br>    
 
@@ -331,7 +334,7 @@ font-family: "STV", Times, serif;
 </td>
           <td>
             <div class="imgbox">
-              <img id ="ad_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/scale_new_poster_empty_zoom.png" allowTaint="true" >
+              <img id ="ad_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/scale_new_poster_empty.png" allowTaint="true" >
             </div>
           </td>
         </tr>
@@ -635,9 +638,21 @@ let zoom_map = new Map();
 	    document.getElementById("new_ad").addEventListener("click", function() {
 		location.href = "ad_index.html";
     });
-	
+	var img_dir = "./";
+	function handleZoomClick(e) {
+		img_dir = e.value;
+        var image = document.getElementById("gender_both").value;
+        //gender_both
+        //gender_female
+        if (document.getElementById("gender_both").checked) {
+            image = document.getElementById("gender_both").value;
+        } else {
+            image = document.getElementById("gender_female").value;
+        }
+        document.getElementById("ad_image").src = img_dir + image;
+	}
 	function handleClick(e) {
-		document.getElementById("ad_image").src = e.value;
+		document.getElementById("ad_image").src = img_dir + e.value;
 	}
 	</script>
 
