@@ -540,6 +540,7 @@ map.set("tamra.png"		, 'طمرة - مسجد معاذ بن جبل');   // a strin
 map.set("kofr_kara.png"	, 'كفرقرع - قاعة مسجد ابو بكر');   // a string key
 map.set("um_alfahm.png"	, 'مسجد ابن تيميه ام الفحم');   // a string key
 map.set("nahaf.png"	, 'نحف - مسجد الرحمن');   // a string key
+map.set("online"	, 'online');   // a string key
 
 map.set('sun.png', 'أحد');   // a string key
 map.set('mon.png', 'إثنين');   // a string key
@@ -559,7 +560,16 @@ map.set('sat.png', 'سبت');   // a string key
       document.querySelector('#mydivheader5').innerHTML =  (params["time"]);
       document.querySelector('#mydivheader6').innerHTML =  (params["contact1"]);
       document.querySelector('#mydivheader7').innerHTML =  (params["contact2"]);
+        
+        
+        //online image handling
+        //
+        if (decodeURIComponent(params["location"]) == "online") {
+            document.getElementById("ad_image").src = "male_online.png";
+            document.getElementById("gender_both").value = "male_online.png";
+            document.getElementById("gender_female").value = "female_online.png";
 
+        }
       //Make the DIV element draggagle:
       dragElement(document.getElementById("mydiv"));
       dragElement(document.getElementById("mydiv1"));
@@ -642,6 +652,11 @@ let zoom_map = new Map();
     });
 	var img_dir = "./";
 	function handleZoomClick(e) {
+        if (decodeURIComponent(params["location"]) == "online") {
+            document.getElementById("gender_both").value = "male_online.png";
+            document.getElementById("gender_female").value = "female_online.png";
+            return;
+        }
 		img_dir = e.value;
         var image = document.getElementById("gender_both").value;
         //gender_both
