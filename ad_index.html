@@ -136,8 +136,17 @@
     <h1>انشئ إعلانًا</h1>
     <p>الرجاء تعبئة التفاصيل ومن ثم الضغط على انشاء</p>
     <div>
-        <form type=get action="final.html">
-            <table class="blueTable" cellspacing="70">
+        <form id="values_form" type=get action="final.html">
+            <select name="ads_count" id="ads_count" placeholder="count" onchange="select_count()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <br>
+            <br>
+
+            <table id="data_table" class="blueTable" cellspacing="70">
                 <tr class="spaceUnder">
                     <td>اسم المدرّس</td>
                     <td>موضوع الدورة</td>
@@ -268,12 +277,65 @@
                     <tr>
                     </tr>
                 </tfoot>
+            </table>
+            <div id="before_end">
+</div>
+
         </form>
-        </table>
+
 		<br>
 		                            <input data-html2canvas-ignore="true" style="font-size : 18px;horizontal-align:left;" id="return_back" type="button" class="create_btn" onclick="window.location.href='index.html'" value="عودة للصفحة الرئيسية" />
 
     </div>
+<script>
+var data_table_id = 1;
+function dup_data_table(count) {
+    var myDiv = document.getElementById("data_table");
+    for (var i = 0; i < count - 1; i++) {
+        var divClone = myDiv.cloneNode(true); // the true is for deep cloning
+        divClone.setAttribute('id', "data_table" + "_" + data_table_id);
+        data_table_id++;
+
+        //var tr_children = divClone.getElementsByTagName('tr');// any tag could be used here..
+        //
+        //for(var i = 0; i< tr_children.length;i++)
+        //{
+        //    if (tr_children[i].getAttribute('id') == 'only_once_ctrls') // any attribute could be used here
+        //    {
+        //        tr_children[i].remove();
+        //
+        //    }
+        //}
+        //var div_children = divClone.getElementsByTagName('div');// any tag could be used here..
+        //
+        //for(var i = 0; i< div_children.length;i++)
+        //{
+        //    var file = div_children[i].getAttribute('id');
+        //    let pos = file.lastIndexOf("_");
+        //    file = file.substr(0, pos < 0 ? file.length : pos) + "_" + count;
+        //    div_children[i].setAttribute('id', file);
+        //}
+        document.getElementById("before_end").appendChild(divClone);
+        //document.body.appendChild(divClone);
+    }
+}
+
+function select_count() {
+    var ads_count = document.getElementById("ads_count").value;
+    for (var i = 0; i < data_table_id; i++) {
+        var added_table = document.getElementById("data_table" + "_" + i);
+        if (added_table) {
+            added_table.remove();
+        }
+
+    
+    }
+    var ads_count = document.getElementById("ads_count").value;
+    data_table_id = 1;
+    dup_data_table(ads_count);
+}
+</script>
+
 </body>
 
 </html>
