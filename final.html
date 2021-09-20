@@ -251,7 +251,7 @@ font-family: "STV", Times, serif;
     }
   </style>
   <body>
-    <div  align="right">
+    <div  id="all_ads" align="right">
       <table align="center" id="toSave" cellspacing="0" class="toSave">
         <tr>
           <td>
@@ -403,7 +403,7 @@ function saveAs(uri, filename) {
         var canvas_image_height = HTML_Height;
         var totalPDFPages = 0;//Math.ceil(HTML_Height/PDF_Height)-1; multiple pages issue
 	      
-        var element = document.getElementById("toSave");
+        var element = document.getElementById("all_ads");
         var create_button = document.getElementById("create_button");
         window.scrollTo(-1,0);
         html2canvas(element,{ scale:4, useCORS:true}).then(function(canvas){
@@ -598,8 +598,9 @@ function dup_tosave(count) {
         file = file.substr(0, pos < 0 ? file.length : pos) + "_" + count;
         div_children[i].setAttribute('id', file);
     }
+    document.getElementById("all_ads").appendChild(divClone);
 
-    document.body.appendChild(divClone);
+    //document.body.appendChild(divClone);
 }
 
 function drag_divs(count) {
