@@ -415,7 +415,7 @@ function saveAs(uri, filename) {
                     pdf.addPage(PDF_Width, PDF_Height);
                     pdf.addImage(imgData, 'PNG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
           }
-          var filename = map.get(decodeURIComponent(params["subject_0"])) + map.get(decodeURIComponent(params["teacher_0"]));
+          var filename = map.get(decodeURIComponent(params["location_0"])) +"_"+ params["subject_0"])) +"_"+ map.get(decodeURIComponent(params["teacher_0"]));
           pdf.save(filename + ".pdf");
          // document.body.appendChild(canvas);
 		  //saveAs(imgData, 'file-name.jpeg');
@@ -433,7 +433,7 @@ function saveAs(uri, filename) {
                     pdf.addPage(PDF_Width, PDF_Height);
                     pdf.addImage(imgData, 'PNG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
           }
-          var filename = map.get(decodeURIComponent(params["subject_0"])) + map.get(decodeURIComponent(params["teacher_0"]));
+          var filename = map.get(decodeURIComponent(params["location_0"])) +"_"+ params["subject_0"])) +"_"+ map.get(decodeURIComponent(params["teacher_0"]));
          // pdf.save(filename + ".pdf");
           document.body.appendChild(canvas);
 		  saveAs(imgData, filename + '.png');
