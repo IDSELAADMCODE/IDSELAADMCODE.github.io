@@ -251,7 +251,7 @@ font-family: "STV", Times, serif;
     }
   </style>
   <body>
-    <div  id="all_ads" align="right">
+    <div  id="all_ads" align="right" class="all_ads">
       <table align="center" id="toSave" cellspacing="0" class="toSave">
         <tr>
           <td>
@@ -394,16 +394,16 @@ function saveAs(uri, filename) {
     var elementzoomIn = document.getElementById("zoomIn");
     elementzoomIn.parentNode.removeChild(elementzoomIn);
 
-        var HTML_Width = $(".all_ads").width();
-        var HTML_Height = $(".all_ads").height();
+        var HTML_Width = $(".toSave").width();
+        var HTML_Height = $(".toSave").height();
         var top_left_margin = 0;
         var PDF_Width = HTML_Width+(top_left_margin*2);
-        var PDF_Height = (PDF_Width*1.415)+(top_left_margin*2);
+        var PDF_Height = HTML_Height;//(PDF_Width*1.415)+(top_left_margin*2);
         var canvas_image_width = HTML_Width;
         var canvas_image_height = HTML_Height;
         var totalPDFPages = 0;//Math.ceil(HTML_Height/PDF_Height)-1; multiple pages issue
 	      
-        var element = document.getElementById("all_ads");
+        var element = document.getElementById("toSave");
         var create_button = document.getElementById("create_button");
         window.scrollTo(-1,0);
         html2canvas(element,{ scale:4, useCORS:true}).then(function(canvas){
@@ -574,9 +574,9 @@ function fill_text(count) {
     document.querySelector('#mydivheader7'+ "_" + count).innerHTML =  (params["contact2"+ "_" + count]);
 }
       params = getParams();
-function dup_tosave(count) {
-    var myDiv = document.getElementById("toSave");
-    var divClone = myDiv.cloneNode(true); // the true is for deep cloning
+function dup_tosave(toSaveDIV, count) {
+    //var myDiv = document.getElementById("toSave");
+    var divClone = toSaveDIV.cloneNode(true); // the true is for deep cloning
     divClone.setAttribute('id', "toSave" + "_" + count);
 
     var tr_children = divClone.getElementsByTagName('tr');// any tag could be used here..
@@ -598,7 +598,7 @@ function dup_tosave(count) {
         file = file.substr(0, pos < 0 ? file.length : pos) + "_" + count;
         div_children[i].setAttribute('id', file);
     }
-    document.getElementById("all_ads").appendChild(divClone);
+    document.getElementById("toSave").appendChild(divClone);
 
     //document.body.appendChild(divClone);
 }
@@ -617,12 +617,14 @@ function drag_divs(count) {
 function setup_ads_count() {
     var count = params['ads_count_0'];
     var img_dir = "./";
+    var myDiv = document.getElementById("toSave");
+    var divClone = myDiv.cloneNode(true); // the true is for deep cloning
 
     fill_text(0);
     drag_divs(0);
 
     for (var i = 1; i < count; i++) {
-        dup_tosave(i);
+        dup_tosave(divClone, i);
         fill_text(i);
         drag_divs(i);
 
