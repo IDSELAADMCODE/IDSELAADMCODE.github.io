@@ -591,13 +591,14 @@ function dup_tosave(toSaveDIV, count) {
         }
     }
     var div_children = divClone.getElementsByTagName('div');// any tag could be used here..
-
+    var right_indent = count*20 + 10;
     for(var i = 0; i< div_children.length;i++)
     {
         var file = div_children[i].getAttribute('id');
         let pos = file.lastIndexOf("_");
         file = file.substr(0, pos < 0 ? file.length : pos) + "_" + count;
         div_children[i].setAttribute('id', file);
+        div_children[i].style.right = right_indent.toString()+'%'; //e.g. '70%';
     }
     document.getElementById("toSave").appendChild(divClone);
 
