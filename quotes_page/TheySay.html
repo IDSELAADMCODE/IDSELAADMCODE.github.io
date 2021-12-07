@@ -1,0 +1,139 @@
+<html lang="en" dir="rtl">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="jsData.js"></script>
+
+    <title>قالوا عنا</title>
+
+    <style>
+        h1 {
+            color: #6699B4
+        }
+
+        th {
+            border: 1px solid #b3b3b3;
+            border-top: 0;
+        }
+
+        td {
+            border: 1px solid #b3b3b3;
+            border-top: 0;
+            border-left: 0;
+        }
+
+        table {
+            border-top: 1px solid #b3b3b3;
+            border-color: #b3b3b3 !important;
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+            console.log(branches2)
+            constructTable(branches2, "#bigTable");
+        })
+
+        function constructTable(list, selector) {
+
+            debugger;
+
+            // Getting the all column names
+            var cols = Headers([""].concat(list[0].courses.map(x => x.name)), selector);
+            // var cols = Headers(["", "تفسير","عقيدة", "علوم القرآن وعلوم الحديث"], selector);
+
+            // Traversing the JSON data
+            for (var i = 0; i < list.length; i++) {
+                var row = $('<tr>');
+                row.append($(`<th scope="row" style="text-align:center;vertical-align:middle">
+                                <span>` + list[i].name + `</span>
+                                <br/>
+                                <span style="font-size:9px">فيديو: ` + parseInt((list[i].courses.filter(element => element.video.link != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
+                                <br/>
+                                <span style="font-size:9px">نص: ` + parseInt((list[i].courses.filter(element => element.statement.link != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
+                            </th>`));
+                for (var colIndex = 0; colIndex < list[i].courses.length; colIndex++) {
+                    var val = list[i].courses[colIndex];
+
+                    // If there is any key, which is matching
+                    // with the column name
+                    if (val == null)
+                        val = "";
+                    else if (!val.isDone)
+                        row.append(`<td style="text-align:center">-</td>`)
+                    else
+                        row.append(
+                            `<td>
+                            <div style="padding:5px 0;background-color:white ;text-align:center"> 
+                                <a data-bs-toggle="modal"  
+                                    data-bs-target="` + (val.statement.details == "" ? "" : "#exampleModal" + list[i].id + val.id) + `" style="margin:0 5px" style="margin:0 5px"
+                                    title="` + val.statement.details + `">
+                                    <i class="fas fa-comment-dots" style="font-size:15px;color:` + (val.statement.details == "" ? "red" : "green") + `"></i> 
+                                </a> 
+                                <a ` + (val.video.link == "" ? "" : 'href="' + val.video.link) + `" target="_blank"> 
+                                    <i class="fas fa-video" style="margin: 0 3px;font-size:15px;color:` + (val.video.link == "" ? "red" : "green") + `"></i>
+                                </a>
+                                <div class="modal fade" id="exampleModal` + list[i].id + val.id + `" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                                            </div>
+                                            <h5 style="text-align:center;margin:15px 0 0 0">` + (val.statement.name == "" ? "" : val.statement.name) + `</h5>
+                                            <a style="text-decoration: none;margin: 0 0 15px 0"` + (val.statement.link == "" ? "" : 'href="' + val.statement.link) + `" target="_blank"> 
+                                                <div class="modal-body"> "` + (val.statement.details == "" ? "" : val.statement.details) + `" </div>
+                                            </a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>`
+                        );
+                }
+
+                row.append($('</tr>'));
+                // Adding each row to the table
+                $(selector).append(row);
+            }
+        }
+
+        function Headers(list, selector) {
+            var columns = [];
+            var header = $('<tr>');
+
+            for (var i = 0; i < list.length; i++) {
+                header.append($('<th scope="col" style="text-align:center;vertical-align:middle;width:4.5%;font-size:10px">' + list[i] + '</th>'));
+            }
+
+            header.append($('</tr>'));
+            // Appending the header to the table
+            $(selector).append(header);
+            return columns;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;margin:15px 0">قالوا عنّا</h1>
+
+    <table id="bigTable" class="table"></table>
+
+</body>
+
+</html>
