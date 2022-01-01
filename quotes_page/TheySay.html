@@ -62,9 +62,9 @@
                 row.append($(`<th scope="row" style="text-align:center;vertical-align:middle">
                                 <span>` + list[i].name + `</span>
                                 <br/>
-                                <span style="font-size:9px">فيديو: ` + parseInt((list[i].courses.filter(element => element.video.link != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
+                                <span style="font-size:9px">فيديو: %` + parseInt((list[i].courses.filter(element => element.video.link != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
                                 <br/>
-                                <span style="font-size:9px">نص: ` + parseInt((list[i].courses.filter(element => element.statement.link != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
+                                <span style="font-size:9px">نص: %` + parseInt((list[i].courses.filter(element => element.statement.details != "").length * 100) / list[i].courses.filter(element => element.isDone == true).length) + `</span>
                             </th>`));
                 for (var colIndex = 0; colIndex < list[i].courses.length; colIndex++) {
                     var val = list[i].courses[colIndex];
@@ -81,10 +81,10 @@
                             <div style="padding:5px 0;background-color:white ;text-align:center"> 
                                 <a data-bs-toggle="modal"  
                                     data-bs-target="` + (val.statement.details == "" ? "" : "#exampleModal" + list[i].id + val.id) + `" style="margin:0 5px" style="margin:0 5px"
-                                    title="` + val.statement.details + `">
+                                    title="` + val.statement.name + `">
                                     <i class="fas fa-comment-dots" style="font-size:15px;color:` + (val.statement.details == "" ? "red" : "green") + `"></i> 
                                 </a> 
-                                <a ` + (val.video.link == "" ? "" : 'href="' + val.video.link) + `" target="_blank"> 
+                                <a ` + (val.video.link == "" ? "" : 'href="' + val.video.link) + `" target="_blank" title="` + val.video.name + `"> 
                                     <i class="fas fa-video" style="margin: 0 3px;font-size:15px;color:` + (val.video.link == "" ? "red" : "green") + `"></i>
                                 </a>
                                 <div class="modal fade" id="exampleModal` + list[i].id + val.id + `" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
