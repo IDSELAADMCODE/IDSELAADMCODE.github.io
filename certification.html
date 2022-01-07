@@ -278,7 +278,7 @@ table.blueTable tfoot .links a{
             <tr cellspacing="0">
                 <td>
                     <div class="imgbox">
-                        <img id="cert_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/certs/course_certification_male.jpg" allowTaint="true">
+                        <img id="cert_image" style="z-index: -100;" class="center-fit" align="right" src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/w_certs/course_certification_male.jpg" allowTaint="true">
                     </div>
                 </td>
 
@@ -317,6 +317,8 @@ table.blueTable tfoot .links a{
 	
 	
     <script LANGUAGE="JavaScript">
+        var certs_dir = "w_certs/";
+
         function saveAs(uri, filename) {
 
             var link = document.createElement('a');
@@ -345,6 +347,11 @@ table.blueTable tfoot .links a{
         var students_list_counter = 0;
         var students_array = [];
         var cert_list = [];
+        function handleColorClick(e) {
+            certs_dir = e.value;
+            var cert_path = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/" + certs_dir + "/" + cert_list[students_list_counter];
+            document.getElementById("cert_image").src = cert_path;
+        }
 
         function create_image() {
 		var HTML_Width = $(".toSave").width();
@@ -389,7 +396,7 @@ table.blueTable tfoot .links a{
                 } else if (students_list_counter < (students_array.length - 1)) {
                     students_list_counter++;
                     students_counter = 0;
-                    document.getElementById("cert_image").src = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/certs/" + cert_list[students_list_counter];
+                    document.getElementById("cert_image").src = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/" + certs_dir + "/" + cert_list[students_list_counter];
                 } else {
 				    alert("تم إنشاء جميع الشهادات");
 				}
@@ -568,6 +575,10 @@ element.appendChild(para);
     <button class="example_b" align="left" onclick="init_arrays()" data-html2canvas-ignore="true" style="font-size : 20px;" id="create_button">أنشئ الشهادة</button>
     <button class="example_b" data-html2canvas-ignore="true" style="font-size : 20px;" id="zoomOut">-</button>
     <button class="example_b" data-html2canvas-ignore="true" style="font-size : 20px;" id="zoomIn">+</button>
+    <div id="color_radio" style="display:none">
+    <input id="color_radio" onclick="handleColorClick(this);" type="radio" name="color" value="certs/" checked> أبيض    
+    <input id="white_radio" onclick="handleColorClick(this);" type="radio" name="color" value="w_certs/">   ملوّن 
+    </div>
     <button class="example_b" data-html2canvas-ignore="true" style="font-size : 20px;" id="return_back">عودة للصفحة الرئيسية</button>
     <script>
         let zoom_map = new Map();
@@ -602,6 +613,10 @@ element.appendChild(para);
 		
 //"course_certification_male.jpg", "course_certification_female.jpg", "course_certification_extra_male.jpg", "course_certification_extra_female.jpg"
         function init_arrays() {
+            var eRadioC = document.getElementById("color_radio");
+            //var eRadioW = document.getElementById("white_radio");
+            eRadioC.style.display = "inline";
+            //eRadioW.style.display = "block";
             students_counter = 0;
             var students = document.getElementById("students_list_male").value;
             document.getElementById("students_list_male").innerHTML = students;
@@ -653,7 +668,7 @@ element.appendChild(para);
 			    students_list_counter = 0;
 			    students_counter = 0;
 				document.querySelector('#mydivheader4').innerHTML = students_array[0][0];
-                document.getElementById("cert_image").src = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/certs/" + cert_list[0];
+                document.getElementById("cert_image").src = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/" + certs_dir + "/" + cert_list[0];
 				document.getElementById("create_button").onclick = create_image;
 			}
         }
