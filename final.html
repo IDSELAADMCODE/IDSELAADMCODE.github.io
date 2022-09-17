@@ -317,7 +317,9 @@ font-family: "STV", Times, serif;
   <p>اختر نوع الاعلان</p>
   <input id="gender_both" onclick="handleClick(this);" type="radio" name="gender" value="scale_new_poster_empty.png" checked> اخوة واخوات<br>
   <input id="gender_female" onclick="handleClick(this);" type="radio" name="gender" value="scale_course_ad_empty_female.png"> اخوات فقط<br>
-</div>
+<!--   <input id="gender_male" onclick="handleClick(this);" type="radio" name="gender" value="scale_course_ad_empty_male.png"> اخوة فقط<br>
+ -->
+  </div>
 <br>    
 
 <button class="example_b" align="left" onclick="create_image()" data-html2canvas-ignore="true" style="font-size : 20px;" id="create_button">انشئ الاعلان</button>
@@ -659,7 +661,7 @@ setup_ads_count();
         
         //online image handling
         //
-        if (decodeURIComponent(params["location"]) == "online") {
+        if (decodeURIComponent(params["location_0"]) == "online") {
             document.getElementById("ad_image").src = "male_online.png";
             document.getElementById("gender_both").value = "male_online.png";
             document.getElementById("gender_female").value = "female_online.png";
@@ -756,7 +758,7 @@ let zoom_map = new Map();
     });
 	var img_dir = "./";
 	function handleZoomClick(e) {
-        if (decodeURIComponent(params["location"]) == "online") {
+        if (decodeURIComponent(params["location_0"]) == "online") {
             document.getElementById("gender_both").value = "male_online.png";
             document.getElementById("gender_female").value = "female_online.png";
             return;
