@@ -399,7 +399,7 @@ table.blueTable tfoot .links a{
                     students_list_counter++;
                     students_counter = 0;
                     document.getElementById("cert_image").src = "https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/" + certs_dir + "/" + cert_list[students_list_counter];
-                    if (students_list_counter > 1 && !text_location_edit) {
+                   if (cert_list[students_list_counter].startsWith("course_certification_extra_") && !text_location_edit) {
                         //var div2_top = document.getElementById("mydiv2").style.top = '100px';
                         var div4_teacher = document.getElementById("mydiv");
                         var div2_loc = document.getElementById("mydiv2");
