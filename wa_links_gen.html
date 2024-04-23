@@ -20,6 +20,16 @@
             text-align: center;
         }
 
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #dddddd;
+        }
+
         p {
             font-family: STV, Charcoal, sans-serif;
             font-size: 25px;
@@ -29,7 +39,7 @@
             font-style: normal;
             font-variant: normal;
             text-transform: none;
-            margin: 0; /* Remove margin */ 
+            margin: 0;
         }
 
         .create_btn {
@@ -67,19 +77,26 @@
     <button type="button" class="create_btn" onclick="generateLinks()">إنشاء روابط واتساب</button>
     <button type="button" class="create_btn" onclick="copyLinks()">نسخ الروابط</button>
     <input data-html2canvas-ignore="true" style="font-size : 18px;horizontal-align:left;" id="return_back" type="button" class="create_btn" onclick="window.location.href='index.html'" value="عودة للصفحة الرئيسية" />
-
 </form>
 
-<div id="result"></div>
+<table>
+    <thead>
+        <tr>
+            <th>الرقم</th>
+            <th>الرابط</th>
+        </tr>
+    </thead>
+    <tbody id="result"></tbody>
+</table>
 
 <script>
 function generateLinks() {
-  var message = document.getElementById('message').value.trim();
-  var phoneNumbers = document.getElementById('phoneNumbers').value.trim().split('\n');
-  var resultDiv = document.getElementById('result');
-  resultDiv.innerHTML = ''; // Clear previous results
+    var message = document.getElementById('message').value.trim();
+    var phoneNumbers = document.getElementById('phoneNumbers').value.trim().split('\n');
+    var resultBody = document.getElementById('result');
+    resultBody.innerHTML = ''; // Clear previous results
 
-  phoneNumbers.forEach(function(number) {
+    phoneNumbers.forEach(function(number, index) {
     // Encode everything except Arabic letters, space, and '*'
     var encodedMessage = message.replace(/[^\u0600-\u06FF ]/g, function(match) {
       return encodeURIComponent(match);
@@ -96,31 +113,39 @@ function generateLinks() {
     
     
     var whatsappLink = 'https://wa.me/972' + encodeURIComponent(number.trim()) + '?text=' + encodedMessage;
-    var linkText = whatsappLink;
-    var linkElement = document.createElement('p');
-    linkElement.textContent = linkText;
-    resultDiv.appendChild(linkElement);
-  });
+        var row = resultBody.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        
+        cell1.innerHTML = '<span data-ignore-copy> ' + (index + 1) + '</span>';
+        cell2.textContent = whatsappLink;
+    });
 }
-function copyLinks() {
-    var resultDiv = document.getElementById('result');
-    var linksText = '';
-    var links = resultDiv.getElementsByTagName('p');
-    for (var i = 0; i < links.length; i++) {
-        linksText += links[i].textContent + '\n';
-    }
-    console.log(linksText); 
 
-    // Copy links text to clipboard
+function copyLinks() {
+    var table = document.querySelector('table');
+    var rows = table.getElementsByTagName('tr');
     var tempInput = document.createElement('textarea');
-    tempInput.value = linksText;
+    var copyText = '';
+
+    for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        for (var j = 0; j < cells.length; j++) {
+            var cell = cells[j];
+            if (!cell.querySelector('[data-ignore-copy]')) {
+                copyText += cell.textContent.trim() + '\t'; // Add tab as separator
+            }
+        }
+        copyText += '\n'; // Add newline after each row
+    }
+
+    tempInput.value = copyText;
     document.body.appendChild(tempInput);
     tempInput.select();
     navigator.clipboard.writeText(tempInput.value);
     document.body.removeChild(tempInput);
     alert('تم نسخ الروابط إلى الحافظة');
 }
-
 </script>
 <br><br>
     <button type="button" class="create_btn" onclick="copyLinks()">نسخ الروابط</button>
