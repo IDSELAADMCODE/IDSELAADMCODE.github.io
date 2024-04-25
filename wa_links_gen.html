@@ -109,8 +109,8 @@ function generateLinks() {
 
         // Replace newline characters after encoding
         encodedMessage = encodedMessage.replace(/%0A/g, '%0D%0A');
-
-        var whatsappLink = 'https://wa.me/972' + encodeURIComponent(number.trim()) + '?text=' + encodedMessage;
+        var phone_number = encodeURIComponent(number.trim())
+        var whatsappLink = 'https://wa.me/972' + phone_number + '?text=' + encodedMessage;
         var row = resultBody.insertRow();
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -121,7 +121,7 @@ function generateLinks() {
         // Create hyperlink in the third cell
         var link = document.createElement('a');
         link.href = whatsappLink;
-        link.textContent = 'رابط واتساب';
+        link.textContent = phone_number;
         cell3.appendChild(link);
     });
 }
