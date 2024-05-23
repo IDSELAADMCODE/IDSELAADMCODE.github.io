@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انشاء جهات الاتصال</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: center;
+            padding-right: 5%;
+        }
+
+        h1 {
+            color: #333333;
+            background: #FFFFFF;
+            text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15);
+            color: #333333;
+            background: #FFFFFF;
+            text-align: center;
+        }
+
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333333;
+            background-color: #00f0f9; /* Add background color */
+            padding: 5px 10px; /* Add padding for better spacing */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #FFFFFF; /* Add background color */
+        }
+        button[type="submit"] {
+            color: #fff !important;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: #60a3bc;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.4s ease 0s;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+            box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+            transition: all 0.4s ease 0s;
+        }
+
+        #output {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333333;
+        }
+
+        pre {
+            font-family: STV, Charcoal, sans-serif;
+            font-size: 16px;
+            color: #0070FF;
+            font-weight: 700;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            margin: 0;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        a {
+            color: #0070FF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #004477;
+        }
+        ::placeholder {
+            color: #000000; /* Placeholder text color */
+            font-style: italic; /* Placeholder text style */
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #60a3bc; /* Button background color */
+            color: #fff; /* Button text color */
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #4a859a; /* Button background color on hover */
+        }
+        
+        .create_btn {
+            color: #fff !important;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: #60a3bc;
+            padding: 10px;
+            border-radius: 50px;
+            display: inline-block;
+            border: none;
+            transition: all 0.4s ease 0s;
+            font-size: 25px;
+        }
+
+        .create_btn:hover {
+            text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+            -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+            -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+            transition: all 0.4s ease 0s;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>انشاء جهات الاتصال</h1>
+    <form id="contactForm">
+        <label for="namesInput">الأسماء (كل اسم في سطر منفصل):</label>
+        <textarea id="namesInput" name="names" rows="4" cols="50" placeholder="أدخل الأسماء هنا"></textarea><br>
+        <label for="citiesInput">المدن (كل مدينة في سطر منفصل):</label>
+        <textarea id="citiesInput" name="cities" rows="4" cols="50" placeholder="أدخل المدن هنا"></textarea><br>
+        <label for="phonesInput">الهواتف (كل رقم في سطر منفصل، 10 أرقام):</label>
+        <textarea id="phonesInput" name="phones" rows="4" cols="50" placeholder="أدخل أرقام الهواتف هنا (10 أرقام)"></textarea><br>
+        <label for="outFile">اسم ملف الناتج:</label>
+        <input type="text" id="outFile" name="outFile" value="output_contacts.csv">
+        <button type="submit" class="create_btn">انشاء جهات الاتصال</button>
+    </form>
+      <input data-html2canvas-ignore="true" style="font-size : 18px;horizontal-align:left;" id="return_back" type="button" class="create_btn" onclick="window.location.href='index.html'" value="عودة للصفحة الرئيسية" />
+
+    <div id="output"></div>
+
+
+    <script>
+        function mkdate(datestr) {
+            return new Date(datestr);
+        }
+
+        function parseArgs() {
+            const form = new FormData(document.getElementById('contactForm'));
+            return {
+                names: form.get('names').split('\n').map(name => name.trim()),
+                cities: form.get('cities').split('\n').map(city => city.trim()),
+                phones: form.get('phones').split('\n').map(phone => phone.trim()),
+                out_file: form.get('outFile')
+            };
+        }
+
+        function validateInputLength(names, cities, phones) {
+            return names.length === cities.length && cities.length === phones.length;
+        }
+
+        function validatePhone(phone) {
+            return /^\d{10}$/.test(phone);
+        }
+
+        function main() {
+            const userArgs = parseArgs();
+            const out_file = userArgs.out_file;
+            const names = userArgs.names;
+            const cities = userArgs.cities;
+            const phones = userArgs.phones;
+
+            // Validation
+            if (!validateInputLength(names, cities, phones)) {
+                var names_count = "\n عدد الاسماء: " + names.length;
+                var cities_count = ", عدد المدن: " + cities.length;
+                var phones_count = ", عدد الارقام: " + phones.length;
+                alert('عدد الأسماء والمدن والهواتف يجب أن يتطابق.' + names_count + cities_count + phones_count);
+                return;
+            }
+
+            const invalidPhones = phones.filter(phone => !validatePhone(phone));
+            if (invalidPhones.length > 0) {
+                alert(`بعض ارقام الهواتف غير صالحة: ${invalidPhones.join('\n, ')}. يجب ان يتكوّن كل رقم من 10 ارقام.`);
+                return;
+            }
+
+            const groupTxt = ",* myContacts, ";
+            let res = names;
+            if (cities.length) {
+                res = names.map((name, index) => name + " - " + cities[index]);
+            }
+            const sufRes = res.map(name => name + groupTxt);
+            const finalRes = sufRes.map((name, index) => name + phones[index]);
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `<h2>الاسماء</h2>`;
+
+            const csvContent = "Name,Group Membership,Phone 1 - Value\n" + finalRes.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = out_file;
+            a.textContent = 'تحميل الملف';
+            a.classList.add('button'); // Add a class for styling
+
+            outputDiv.appendChild(a);
+            outputDiv.innerHTML += `<pre>${finalRes.join('\n')}</pre>`;
+
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            main();
+        });
+    </script>
+    
+    </body>
+</html>
+
+
