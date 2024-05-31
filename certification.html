@@ -7,6 +7,7 @@
 </head>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    <script src="selections.js"></script>
 
 <script type="text/javascript" src="html2canvas.js"></script>
 <style>
@@ -453,96 +454,20 @@ element.appendChild(para);
             return params;
         }
         let map = new Map();
+// Iterate over teacherOptions array
+teacherOptions.forEach(option => {
+    // Set key-value pairs in the map
+    map.set(option.value, option.text);
+});// Iterate over subjectOptions array
+subjectOptions.forEach(option => {
+    // Set key-value pairs in the map
+    map.set(option.value, option.text);
+});// Iterate over locationOptions array
+locationOptions.forEach(option => {
+    // Set key-value pairs in the map
+    map.set(option.value, option.text);
+});
 
-        map.set("shiekh_khaled_sakr", 'الشيخ خالد صقر'); // a string key
-        map.set("shiekh_abd_alrahem", 'الشيخ عبد الرحيم خليل'); // a string key
-        map.set("shiekh_mashhor_fawaz", 'الشيخ مشهور فوّاز'); // a string key
-        map.set("shiekh_mahmod_abo_shfea", 'الشيخ محمود ابو شفيع'); // a string key
-        map.set("shiekh_muhammad_ayesh", 'الشيخ محمد عايش'); // a string key
-        map.set("shiekh_ameer_naffar", 'الشيخ امير نفار'); // a string key
-        map.set("shiekh_ehab_khalil", 'الشيخ ايهاب الشيخ خليل'); // a string key
-        map.set("shiekh_ehab_khiralla", 'الشيخ ايهاب خير الله'); // a string key
-        map.set("shiekh_muhammad_haidare", 'الشيخ محمد حيادري'); // a string key
-        map.set("shiekh_raafat_kanaana"		, 'الشيخ رأفت كناعنة');   // a string key
-        map.set("shiekh_badeaa_melhem"		, 'الشيخ بديع ملحم');   // a string key
-        map.set("shiekh_mahmod_khatib", 'الشيخ محمود خطيب'); // a string key
-        map.set("shiekh_hilal", 'الشيخ هلال حسينية'); // a string key
-        map.set("shiekh_muhamad_aref", 'الشيخ محمد العارف وتد'); // a string key
-        map.set("shiekh_mahmod_watad", 'الشيخ محمود وتد'); // a string key
-        map.set("shiekh_khaled_zoabi"				, 'الشيخ خالد زعبي');   // a string key
-        map.set("shiekh_abdallah_idres"				, 'الشيخ عبد الله إدريس');   // a string key
-        map.set("shiekh_adi_fares"				, 'الشيخ عدي فارس');   // a string key
-        map.set("shiekh_husam_saeed"				, 'الشيخ حسام بن سعيد ');   // a string key
-        map.set("shiekh_yousef_salame"				, 'الشيخ يوسف سلامة ');   // a string key
-        map.set("shiekh_suliman_albdor"				, 'الشيخ سليمان البدور');   // a string key
-        map.set("hamed", 'الأستاذ حامد اغبارية'); // a string key
-        map.set("shiekh_tawfek", 'الأستاذ توفيق محمد'); // a string key
-        map.set("shiekh_ahmad_hammad", 'الشيخ احمد حماد'); // a string key
-        map.set("hussen_muhammady"			, 'الشيخ حسين محمدي');   // a string key
-        map.set("abd_alrahman_abu_hija"			, 'الشيخ عبد الرحمن ابو الهيجاء');   // a string key
-        map.set("ali_kamal"			, 'الشيخ علي كمال');   // a string key
-        map.set("mahde_zahalka"			, 'الشيخ مهدي زحالقة');   // a string key
-        map.set("orsan_hajajra"			, 'الشيخ د. عرسان الغازي حجاجرة');   // a string key
-        map.set("mansor_atamnh"			, 'الأستاذ منصور عثامنة');   // a string key
-        map.set("muhammad_shalabe"			, 'الأستاذ محمد شلبي');   // a string key
-        map.set("abdallah_shqer"			, 'الأستاذ عبد الله شقير');   // a string key
-        map.set("nael_fawaz"			, 'الشيخ نائل فواز');   // a string key
-        map.set("anas_suleman"			, 'الدكتور انس سليمان');   // a string key
-        map.set("marwan_jbara"			, 'الشيخ مروان جبارة');   // a string key
-        map.set("tawfek_hathot"			, 'الشيخ توفيق حتحوت');   // a string key
-map.set("maamon_mahamed"			, 'الشيخ مأمون محاميد');   // a string key
-map.set("ali_jabaren"			, 'الشيخ علي جبارين');   // a string key
-map.set("muhammad_shehade"			, 'الشيخ محمد شحادة');   // a string key
-map.set("husam_abu_lel"			, 'الشيخ حسام أبو ليل');   // a string key
-
-        map.set("okht_nihal_okare", 'الأخت نهال عكري'); // a string key
-        map.set("okht_sawsan_masarwe"					, 'الأخت سوسن مصاروة');   // a string key
-        map.set("okht_eiman_abed", 'الأخت ايمان عبيد'); // a string key
-        map.set("okht_asmaa_kryeem", 'الأخت اسماء كريم'); // a string key
-        map.set("okht_tasnem_taha", 'الأخت تسنيم طه'); // a string key
-        map.set("okht_layla_mawase", 'الأخت ليلى مواسي'); // a string key
-        map.set("okht_salam_tayeh", 'الأخت سلام تايه'); // a string key
-        map.set("okht_fadwa_ebed", 'الأخت فدوى عبيد'); // a string key
-        map.set("okht_ahlam_igbaria", 'الأخت أحلام إغبارية'); // a string key
-        map.set("okht_ikhlas_abo_shekha", 'الأخت إخلاص أبو شيخة'); // a string key
-        map.set("okht_asia_zreqe", 'الأخت آسيا زريقي'); // a string key
-        map.set("okht_maria_mahajna", 'الأخت ماريا محاجنة'); // a string key
-
-        map.set("tfser", 'تفسير'); // a string key
-        map.set("sera", 'السيرة النبوية'); // a string key
-        map.set("abadat", 'عبادات (1)'); // a string key
-        map.set("abadat2", 'عبادات (2)'); // a string key
-        map.set("tajwed", 'تجويد (1)'); // a string key
-        map.set("tajwed2", 'تجويد (2)'); // a string key
-        map.set("trbyat_awlad", 'تربية الأولاد في الإسلام'); // a string key
-        map.set("olom_hadeth", 'علوم قرآن وعلوم حديث'); // a string key
-        map.set("osol20", 'الأصول العشرين'); // a string key
-        map.set("thkafa_islamya", 'ثقافة إسلامية'); // a string key
-        map.set("arabic_lang", 'لغة عربية'); // a string key
-        map.set("tzkya", 'تزكية'); // a string key
-        map.set("rjal_alfekr", 'رجال الفكر والدعوة'); // a string key
-        map.set("gzw_fkre", 'الغزو الفكري'); // a string key
-        map.set("mjtmaa_arabe", 'المجتمع العربي'); // a string key
-        map.set("osol_feqh", 'أصول فقه'); // a string key
-        map.set("wsael_daawa", 'وسائل دعوة'); // a string key
-        map.set("aqeda1", 'عقيدة'); // a string key
-        map.set("asaleb_daawa", 'أساليب دعوة'); // a string key
-        map.set("thula_mn_awlen", 'ثلّة من الأولين'); // a string key
-
-        map.set("kofr_kna", 'كفركنا - قاعة مسجد عثمان بن عفان'); // a string key
-        map.set("qlnsawa", 'قلنسوة - المدرسة الاهلية'); // a string key
-        map.set("arraba", 'عرابة - مركز حفيدات عائشة - مبنى الوقف'); // a string key
-        map.set("fredes", 'الفرديس - قاعة مسجد الفردوس - الظهرات'); // a string key
-        map.set("tamra", 'طمرة - مسجد معاذ بن جبل'); // a string key
-        map.set("kofr_kara"	, 'كفرقرع - مسجد الصندحاوي');   // a string key
-        map.set("um_alfahm_gen"	, 'مركز البينة، بناية الشافعي - أم الفحم');   // a string key
-        map.set("um_alfahm"	, 'مركز آفاق بصائر الخير - أم الفحم');   // a string key
-        map.set("nahaf"	, 'نحف - مسجد الرحمن');   // a string key
-        map.set("abu_snan"	, 'ابو سنان - قاعة مسجد الرحمة');   // a string key
-        map.set("naqab"	, 'مسجد عمر بن الخطّاب حارة البدور - اللقيّة');   // a string key
-        map.set("aelot"	, 'عيلوط - مدرسة الهدى');   // a string key
-        map.set("jat"	, 'جتّ - ديوان مسجد بلال بن رباح');   // a string key
-        map.set("online"	, 'التعليم عن بعد');   // a string key
         
         params = getParams();
         document.querySelector('#mydivheader').innerHTML = map.get(decodeURIComponent(params["teacher"])); // '<img   src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["teacher"]) + '" allowTaint="true" >';

@@ -7,6 +7,7 @@
 </head>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    <script src="selections.js"></script>
 
 <script type="text/javascript" src="html2canvas.js"></script>
 <style>
@@ -410,19 +411,10 @@ element.appendChild(para);
         }
         let map = new Map();
 
-        map.set("kofr_kna", 'كفركنا'); // a string key
-        map.set("qlnsawa", 'قلنسوة'); // a string key
-        map.set("arraba", 'عرابة'); // a string key
-        map.set("fredes", 'الفرديس'); // a string key
-        map.set("tamra", 'طمرة'); // a string key
-        map.set("kofr_kara", 'كفرقرع'); // a string key
-        map.set("um_alfahm_gen"	, 'أم الفحم');   // a string key
-        map.set("nahaf"	, 'نحف');   // a string key
-        map.set("abu_snan"	, 'ابو سنان');   // a string key
-        map.set("naqab"	, 'اللقيّة');   // a string key
-        map.set("aelot"	, 'عيلوط');   // a string key
-        map.set("jat"	, 'جتّ - ديوان مسجد بلال بن رباح');   // a string key
-        map.set("online"	, 'التعليم عن بعد');   // a string key
+locationOptions.forEach(option => {
+    // Set key-value pairs in the map
+    map.set(option.value, option.text);
+});
         
         params = getParams();
         document.querySelector('#mydivheader2').innerHTML = map.get(decodeURIComponent(params["location"])); //  '<img  src="https://raw.githubusercontent.com/IDSELAADMCODE/IDSELAADMCODE.github.io/master/field_pics/' + decodeURIComponent(params["location"]) + '" allowTaint="true" >';

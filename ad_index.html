@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script src="selections.js"></script>
 </head>
 <style>
     table.blueTable {
@@ -157,106 +158,30 @@
                 <tr class="spaceUnder">
                     <td>
                         <select name="teacher" id="myText" placeholder="المدرّس">
-                            <option selected="selected" value="اختر مدرسًا">اختر مدرسًا</option>
-                            <option value="shiekh_khaled_sakr">الشيخ خالد صقر</option>
-                            <option value="shiekh_abd_alrahem">الشيخ عبد الرحيم خليل</option>
-                            <option value="shiekh_mashhor_fawaz">الشيخ مشهور فوّاز</option>
-                            <option value="shiekh_mahmod_abo_shfea">الشيخ محمود ابو شفيع</option>
-                            <option value="shiekh_muhammad_ayesh">الشيخ محمد عايش</option>
-                            <option value="shiekh_ameer_naffar">الشيخ امير نفار</option>
-                            <option value="shiekh_ehab_khalil">الشيخ ايهاب الشيخ خليل</option>
-                            <option value="shiekh_ehab_khiralla">الشيخ ايهاب خير الله</option>
-                            <option value="shiekh_muhammad_haidare">الشيخ محمد حيادري</option>
-                            <option value="shiekh_raafat_kanaana">الشيخ رأفت كناعنة</option>
-                            <option value="shiekh_badeaa_melhem">الشيخ بديع ملحم</option>
-                            <option value="shiekh_mahmod_khatib">الشيخ محمود خطيب</option>
-                            <option value="shiekh_hilal">الشيخ هلال حسينية</option>
-                            <option value="shiekh_muhamad_aref">الشيخ محمد وتد</option>
-                            <option value="shiekh_mahmod_watad">الشيخ محمود وتد</option>
-                            <option value="shiekh_khaled_zoabi">الشيخ خالد زعبي</option>
-                            <option value="shiekh_abdallah_idres">الشيخ عبد الله إدريس</option>
-                            <option value="shiekh_adi_fares">الشيخ عدي فارس</option>
-                            <option value="shiekh_husam_saeed">الشيخ حسام بن سعيد </option>
-                            <option value="shiekh_yousef_salame">الشيخ يوسف سلامة </option>
-                            <option value="shiekh_suliman_albdor">الشيخ سليمان البدور</option>                            
-                            <option value="hamed">الاستاذ حامد اغبارية</option>
-                            <option value="shiekh_tawfek">الاستاذ توفيق محمد</option>
-                            <option value="shiekh_ahmad_hammad">الشيخ احمد حماد</option>
-                            <option value="hussen_muhammady">الشيخ حسين محمدي</option>
-                            <option value="abd_alrahman_abu_hija">الشيخ عبد الرحمن ابو الهيجاء</option>
-                            <option value="ali_kamal">الشيخ علي كمال</option>
-                            <option value="mahde_zahalka">الشيخ مهدي زحالقة</option>
-                            <option value="orsan_hajajra">الشيخ عرسان حجاجرة</option>
-                            <option value="mansor_atamnh">الأستاذ منصور عثامنة</option>
-                            <option value="muhammad_shalabe">الأستاذ محمد شلبي</option>
-                            <option value="abdallah_shqer">الأستاذ عبد الله شقير</option>
-              <option value="nael_fawaz">الشيخ نائل فواز</option>
-              <option value="anas_suleman">الدكتور انس سليمان</option>
-              <option value="marwan_jbara">الشيخ مروان جبارة</option>
-              <option value="tawfek_hathot">الشيخ توفيق حتحوت</option>
-              <option value="maamon_mahamed">الشيخ مأمون محاميد</option>
-              <option value="ali_jabaren">الشيخ علي جبارين</option>
-              <option value="muhammad_shehade">الشيخ محمد شحادة</option>
-              <option value="husam_abu_lel">الشيخ حسام أبو ليل</option>
-
-                            <option value="okht_nihal_okare">الأخت نهال عكري</option>
-                            <option value="okht_sawsan_masarwe">الأخت سوسن مصاروة</option>
-                            <option value="okht_eiman_abed">الأخت ايمان عبيد</option>
-                            <option value="okht_asmaa_kryeem">الأخت اسماء كريم</option>
-                            <option value="okht_tasnem_taha">الأخت تسنيم طه</option>
-                            <option value="okht_layla_mawase">الأخت ليلى مواسي</option>
-                            <option value="okht_salam_tayeh">الأخت سلام تايه</option>
-                            <option value="okht_fadwa_ebed">الأخت فدوى عبيد</option>
-                            <option value="okht_ahlam_igbaria">الأخت أحلام إغبارية</option>
-                            <option value="okht_ikhlas_abo_shekha">الأخت إخلاص أبو شيخة</option>
-                            <option value="okht_asia_zreqe">الأخت آسيا زريقي</option>
-                            <option value="okht_maria_mahajna">الأخت ماريا محاجنة</option>
+                <!-- Populate options dynamically using JavaScript -->
+                <script>
+                    teacherOptions.forEach(function(option) {
+                    document.write(`<option value="${option.value}">${option.text}</option>`);
+                    });
+                </script>
                         </select>
                     </td>
                     <td>
                         <select name="subject" id="myText1" placeholder="موضوع الدورة">
-                            <option id="myText1" selected="selected" value="اختر موضوعا">اختر موضوعا</option>
-                            <option value="tfser">تفسير القران</option>
-                            <option value="sera">السيرة النبوية</option>
-                            <option value="tajwed1_m">تجويد 1 - إخوة</option>
-                            <option value="tajwed1_f">تجويد 1 - أخوات</option>
-                            <option value="tajwed2_m">تجويد 2 - إخوة</option>
-                            <option value="tajwed2_f">تجويد 2 - أخوات</option>
-                            <option value="abadat1">عبادات 1</option>
-                            <option value="abadat2">عبادات 2</option>
-                            <option value="trbyat_awlad">تربية الاولاد</option>
-                            <option value="olom_hadeth">علوم حديث وقرآن</option>
-                            <option value="osol20">الاصول العشرين</option>
-                            <option value="thkafa_islamya">الثقافة الاسلامية</option>
-                            <option value="arabic_lang">اللغة العربية</option>
-                            <option value="tzkya">التزكية</option>
-                            <option value="thula_mn_awlen">ثُلّةٌ من الأولين</option>
-                            <option value="rjal_alfekr">رجال الفكر</option>
-                            <option value="gzw_fkre">الغزو الفكري</option>
-                            <option value="mjtmaa_arabe">المجتمع العربي</option>
-                            <option value="osol_feqh">اصول الفقه</option>
-                            <option value="wsael_daawa">وسائل دعوة</option>
-                            <option value="aqeda1">العقيدة الاسلامية</option>
-                            <option value="asaleb_daawa">اساليب الدعوة</option>
+                <script>
+                    subjectOptions.forEach(function(option) {
+                    document.write(`<option value="${option.value}">${option.text}</option>`);
+                    });
+                </script>
                         </select>
                     </td>
                     <td>
                         <select name="location" id="myText2" placeholder="مكان الدورة">
-                            <option selected="selected" value="مكان الدورة">مكان الدورة</option>
-                            <option value="kofr_kna">كفركنا</option>
-                            <option value="qlnsawa">قلنسوة</option>
-                            <option value="arraba">عرابة</option>
-                            <option value="fredes">الفريديس</option>
-                            <option value="tamra">طمرة</option>
-                            <option value="kofr_kara">كفرقرع</option>
-                            <option value="um_alfahm_gen">ام الفحم - عام</option>
-                            <option value="um_alfahm">ام الفحم - اخوات</option>
-                            <option value="nahaf">نحف</option>
-                            <option value="abu_snan">ابو سنان</option>
-                            <option value="naqab">النقب</option>
-                            <option value="aelot">عيلوط</option>
-                            <option value="jat">جت</option>
-                            <option value="online">online</option>
+                <script>
+                    locationOptions.forEach(function(option) {
+                    document.write(`<option value="${option.value}">${option.text}</option>`);
+                    });
+                </script>
                         </select>
                     </td>
                     <td>

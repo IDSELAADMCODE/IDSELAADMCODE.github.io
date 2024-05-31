@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script src="selections.js"></script>
   </head>
   <style>
   
@@ -137,21 +138,11 @@ transition: all 0.4s ease 0s;
         <tr class="spaceUnder">
 		  <td>
             <select name="location" id="myText2" placeholder="مكان الدورة">
-              <option selected="selected" value="مكان الدورة">مكان الدورة</option>
-              <option value="kofr_kna">كفركنا</option>
-              <option value="qlnsawa">قلنسوة</option>
-              <option value="arraba">عرابة</option>
-              <option value="fredes">الفريديس</option>
-              <option value="tamra">طمرة</option>
-              <option value="kofr_kara">كفرقرع</option>
-              <option value="um_alfahm_gen">ام الفحم - عام</option>
-              <option value="um_alfahm">ام الفحم - اخوات</option>
-              <option value="nahaf">نحف</option>
-              <option value="abu_snan">ابو سنان</option>
-              <option value="naqab">النقب</option>
-              <option value="aelot">عيلوط</option>
-              <option value="jat">جت</option>
-              <option value="online">online</option>
+                <script>
+                    locationOptions.forEach(function(option) {
+                    document.write(`<option value="${option.value}">${option.text}</option>`);
+                    });
+                </script>
             </select>
           </td>
         </tr>
