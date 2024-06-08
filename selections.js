@@ -52,6 +52,7 @@ var teacherOptions = [
     { value: "okht_ikhlas_abo_shekha", text: "الأخت إخلاص أبو شيخة" },
     { value: "okht_asia_zreqe", text: "الأخت آسيا زريقي" },
     { value: "okht_maria_mahajna", text: "الأخت ماريا محاجنة" },
+    { value: "okht_amna_hijazi", text: "الأخت آمنة حجازي" },
     // Add more options as needed
 ];
 
