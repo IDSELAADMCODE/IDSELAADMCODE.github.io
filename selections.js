@@ -40,7 +40,7 @@ var teacherOptions = [
     { value: "ali_jabaren", text: "الشيخ علي جبارين" },
     { value: "muhammad_shehade", text: "الشيخ محمد شحادة" },
     { value: "husam_abu_lel", text: "الشيخ حسام أبو ليل" },
-    { value: "ahmad_mishhadawe", text: "الشيخ أحمد المشهداوي" },
+    { value: "ahmad_saleh", text: "الشيخ أحمد صالح" },
     { value: "okht_nihal_okare", text: "الأخت نهال عكري" },
     { value: "okht_sawsan_masarwe", text: "الأخت سوسن مصاروة" },
     { value: "okht_eiman_abed", text: "الأخت ايمان عبيد" },
