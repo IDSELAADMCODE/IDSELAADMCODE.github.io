@@ -97,7 +97,7 @@ var locationOptions = [
     { value: "abu_snan", text: "ابو سنان - قاعة مسجد الرحمة" },
     { value: "naqab", text: "اللقيّة - مسجد عمر بن الخطّاب حارة البدور" },
     { value: "aelot", text: "عيلوط - مدرسة الهدى" },
-    { value: "jat", text: "جتّ - ديوان مسجد بلال بن رباح" },
+    { value: "jat", text: "جتّ - مدرسة البيروني الإعدادية" },
     { value: "online", text: "التعليم عن بعد" },
 
     // Add more options as needed
