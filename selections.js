@@ -86,6 +86,7 @@ var subjectOptions = [
 var locationOptions = [
     { value: "مكان الدورة", text: "مكان الدورة" },
     { value: "kofr_kna", text: "كفركنا - قاعة مسجد عثمان بن عفان" },
+    { value: "kofr_kna_F", text: "كفركنا - أخوات فقط - قاعة مسجد عثمان بن عفان" },
     { value: "qlnsawa", text: "قلنسوة - المدرسة الاهلية" },
     { value: "arraba", text: "عرابة - مركز حفيدات عائشة - مبنى الوقف" },
     { value: "fredes", text: "الفرديس - قاعة مسجد الفردوس - الظهرات" },
