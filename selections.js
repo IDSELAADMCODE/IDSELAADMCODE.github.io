@@ -100,7 +100,7 @@ var locationOptions = [
     { value: "naqab", text: "اللقيّة - مسجد عمر بن الخطّاب حارة البدور" },
     { value: "aelot", text: "عيلوط - مدرسة الهدى" },
     { value: "jat", text: "جتّ - مدرسة البيروني الإعدادية" },
-    { value: "transport", text: "الفرع المتنقل: يافا - قاعة مسجد حسن بيك" },
+    { value: "transport", text: "يافا - قاعة مسجد حسن بيك" },
     { value: "online", text: "التعليم عن بعد" },
 
     // Add more options as needed
