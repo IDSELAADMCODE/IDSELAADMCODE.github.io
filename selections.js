@@ -98,7 +98,7 @@ var locationOptions = [
     { value: "nahaf", text: "نحف - مسجد الرحمن" },
     { value: "abu_snan", text: "ابو سنان - قاعة مسجد الرحمة" },
     { value: "naqab", text: "اللقيّة - مسجد عمر بن الخطّاب حارة البدور" },
-    { value: "aelot", text: "عيلوط - مدرسة الهدى" },
+    { value: "nazareth", text: "الناصرة - مجمع بلال بن رباح" },
     { value: "jat", text: "جتّ - مدرسة البيروني الإعدادية" },
     { value: "transport", text: "يافا - قاعة مسجد حسن بيك" },
     { value: "online", text: "التعليم عن بعد" },
