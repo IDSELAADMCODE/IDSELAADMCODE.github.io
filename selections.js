@@ -72,7 +72,7 @@ var subjectOptions = [
     { value: "thkafa_islamya", text: "الثقافة الاسلامية" },
     { value: "arabic_lang", text: "اللغة العربية" },
     { value: "tzkya", text: "التزكية" },
-    { value: "thula_mn_awlen", text: "ثُلّةٌ من الأولين" },
+    { value: "thula_mn_awlen", text: "ثلة من الأولين" },
     { value: "rjal_alfekr", text: "رجال الفكر والدعوة" },
     { value: "gzw_fkre", text: "الغزو الفكري" },
     { value: "mjtmaa_arabe", text: "المجتمع العربي" },
